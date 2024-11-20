@@ -14,7 +14,7 @@ Mery      3333     “F”     8.5
 */
 import Cl_estudiantes from "./Cl_estudiantes.js";
 import Cl_examen from "./Cl_examen.js";
-import Dt_exam from "./Dt_exam.js";
+import Dt_examen from "./Dt_examen.js";
 import Dt_estudiantes from "./Dt_estudiantes.js";
 
 const examen = new Cl_examen();
