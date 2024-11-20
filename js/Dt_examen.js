@@ -1,4 +1,4 @@
-export default Dt_examen = {
+export Dt_examen = {
     valor: 20,
     minApro: 10,
 
