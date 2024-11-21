@@ -45,7 +45,7 @@ export default class Cl_examen{
 }
 
    porcentajeReprobados(){
-            const reprobados = this.estudiantes.filter((estudiante) => estudiante.nota < this.examen.minAprueba).length;
+            const reprobados = this.estudiantes.filter((estudiante) => estudiante.nota < this.examen.minApro).length;
             return (reprobados / this.estudiantes.length) * 100;
         }
     mejorNota(){
