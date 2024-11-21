@@ -46,7 +46,29 @@ let porcentajeAprobados = (examen, salida) => {
   let aprobados = examen.porcentajeAprobados();
   salida.innerHTML = `<br>El porcentaje de aprobados es: ${aprobados.toFixed(2)}`;
 }
- 
+
+let porcentajeReprobados = (examen, salida) => {
+  let reprobados = examen.porcentajeReprobados();
+  salida.innerHTML = `<br>El porcentaje de reprobados es: ${reprobados.toFixed(2)}`;
+}
+
+let mejorNota = (examen, salida) => {
+  let mejorNota = examen.mejorNota();
+  salida.innerHTML = `<br>Estudiante con mejor Nota es: ${mejorNota}`;
+} 
+let chicasEncimaPromedio = (examen,salida) => {
+  let chicasPromedio = examen.chicasEncimaPromedio();
+  salida.innerHTML = `<br>Chicas por encima de la nota promedio:  ${chicasPromedio}`;
+}
+let modificaEstudiante = (examen) => {
+  let cedula = prompt('Ingrese la cedula del estudiante:');   
+  let nuevosDatos = {};
+  nuevosDatos.nombre = prompt('Ingrese el nuevo nombre:');
+  nuevosDatos.cedula = prompt('Ingrese la nueva cedula:');
+  nuevosDatos.sexo = prompt('Ingrese el nuevo sexo:');
+  nuevosDatos.nota = prompt('Ingrese la nueva nota:');
+  examen.modificaEstudiante(cedula, nuevosDatos);
+}
 
 // salidas 
 let salida1 = document.getElementById("salida1"),
@@ -73,11 +95,23 @@ switch (opcion) {
    eliminarEstudiante(examen);
    break;
  case 3: 
- notaPromedio(examen, salida2);
- break;
+   notaPromedio(examen, salida2);
+   break;
  case 4:
-  porcentajeAprobados(examen, salida2);
- break;
+   porcentajeAprobados(examen, salida2);
+  break;
+ case 5:
+  porcentajeReprobados(examen, salida2);
+  break;
+  case 6:
+    mejorNota(examen, salida2);
+    break;
+  case 7:
+    chicasEncimaPromedio(examen, salida2);
+    break;
+  case 8:
+    modificaEstudiante(examen, salida2);
+    break;
 
 }
 };

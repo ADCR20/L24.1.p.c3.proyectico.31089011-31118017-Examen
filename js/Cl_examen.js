@@ -34,15 +34,35 @@ export default class Cl_examen{
   }
 
   
-  porcentajeAprobados() { 
-    let aprobados = 0; 
-    for (let i = 0; i < this.estudiantes.length; i++) {
-         if (this.estudiantes[i].nota >= this.examen.minApro) { aprobados++; } } 
-         return (aprobados / this.estudiantes.length) * 100; }
-
-
-
-
-
-    
+  porcentajeAprobados() {
+    console.log(this); // Verifica el contexto de `this`
+    console.log(this.minApro); // Verifica el valor de `minApro`
+    let aprobados = this.estudiantes.filter((estudiante) => {
+        console.log(estudiante.nota, this.minApro); // Verifica los valores durante el filtrado
+        return estudiante.nota >= this.minApro;
+    }).length;
+    return (aprobados / this.estudiantes.length) * 100;
 }
+
+   porcentajeReprobados(){
+            const reprobados = this.estudiantes.filter((estudiante) => estudiante.nota < this.examen.minAprueba).length;
+            return (reprobados / this.estudiantes.length) * 100;
+        }
+    mejorNota(){
+            const mejorNota = Math.max(...this.estudiantes.map((estudiante) => estudiante.nota));
+            return this.estudiantes.find((estudiante) => estudiante.nota == mejorNota).nombre;
+            }
+    chicasEncimaPromedio() {
+        const chicasPromedio = this.notaPromedio();
+        return this.estudiantes.filter((estudiante)=> estudiante.sexo == "F" && estudiante.nota > chicasPromedio).map((estudiante) => estudiante.nombre);
+    }
+    modificaEstudiante(cedula, nuevosDatos){
+        const estudiante = this.estudiantes.find((estudiante) => estudiante.cedula == cedula);
+        if(estudiante){
+            estudiante.nombre = nuevosDatos.nombre || estudiante.nombre;
+            estudiante.sexo = nuevosDatos.sexo || estudiante.sexo;
+            estudiante.nota = nuevosDatos.nota || estudiante.nota;
+        }
+    }
+    
+};
